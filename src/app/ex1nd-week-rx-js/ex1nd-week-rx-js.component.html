@@ -1,0 +1,50 @@
+<h4>1. Разница между BehaviorSubject(1) и ReplaySubject(1) объяснить.</h4>
+
+<span>BehaviorSubject da boshlang'ich qiymat berilishi kerak, unga data next bolganda subscribe bolgan har bir ozgaruvchiga shu zahoti oxirgi data lar boradi.</span>
+<br>
+<span>ReplaySubject da faqat oxirgi next bolgan data lar amas vunda aldingilarni ham chaqirsa boladi va next bolgan array larni niccasi subscribe bolgan veriblarga gorsansin qolgan gorsanmasinligini ham belgilasa boladi. Buning uchun elon qilganda ReplaySubject(3, 100) shu gorinishda yazilishi garak, 3 oxirgi 3 ta nextni datasi, 100 asa har bir nextdagi gorsanadigan item larni soni<span>
+
+
+<h4>2.1 Пример 1: по клику на кнопку генерируется последовательность чисел [1, 2, 4, 4, 13, 13, 13, 4, 4, 3, 2, 5] (по клику передается новое числе из массива, доходит до 5 и после 5 complete.На выходе в логе должно быть: 1, 2, 4, 13, 4, 3, 2, 5.</h4>
+<button (click)="button1Click()">Button1</button>
+
+
+<h4>2.2 Пример 2: По клику на кнопку последовательно в цепочку передаются следующие объекты по одному на каждый клик:</h4>
+<pre>
+  [
+   a: 1,  b: 4,
+   a: 3,  b: 7,
+   a: 34, b: 9,
+   a: 34, b: 9,
+   a: 56, b: 11,
+   a: 56, b: 11,
+   a: 1,  b: 4
+  ]
+  После работы distinctUntilChanged на выходе на странице должно быть:
+  [
+  a: 1,  b: 4,
+  a: 3,  b: 7,
+  a: 34, b: 9,
+  a: 56, b: 11,
+  a: 1,  b: 4
+  ]
+</pre>
+<button (click)="button2Click()">Button2</button>
+
+
+
+<h4>3\*. Есть основная "труба" button3Click$, которая показывает текущую дату. Сделать подписку (в конструкторе все делаем), которая берет оттуда значения до тех пор, пока из трубы button4Click$ не придет число 3. Реализовать с помощь takeUntil и других известных тебе операторов.</h4>
+<pre>
+  this.button3Click$
+        .pipe() // код писать только тут внутри pipe, остальное трогать по идее не надо
+        .subscribe((value) => this.log.push(value.toString()));
+</pre>
+
+<button (click)="button3Click()">Button3</button>
+<button (click)="button4Click()">Button4</button>
+
+
+
+<div>
+  <div *ngFor="let val of log">{{ val }}</div>
+</div>

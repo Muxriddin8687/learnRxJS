@@ -1,0 +1,20 @@
+<pre>
+  Задание 2.
+  Вывести к заданию 1 вывести по кнопке 5 значений, а дальше не учитывать клики.
+  Вывод по кликам на кнопку 2:
+  0
+  10
+  20
+  30
+  40
+  
+  ---
+</pre>
+
+<button (click)="button1Click()">Button 1</button>
+&nbsp;
+<button (click)="button2Click()">Button 2</button>
+
+<div>
+  <div *ngFor="let val of this.log">{{ val }}</div>
+</div>
